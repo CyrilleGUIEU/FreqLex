@@ -1,13 +1,28 @@
 """Interface graphique pour une étude d'énoncé à l'aide d'un lexique fréquenciel
 """
-
 # On importe Tkinter
 from tkinter import font,Tk,END,LabelFrame,GROOVE,VERTICAL,WORD,S,N,Frame,Scrollbar,Text,Listbox
-#
+import pickle
 
 #On importe les programmes propres au projet
-from base_lexique import rang_mot,taille_lexique
+#from base_lexique import rang_mot,taille_lexique
+
 from gestion_texte import texte_liste
+
+#Récupération des données
+with open ('freqlex.dat', 'rb') as fp:
+    lexique = pickle.load(fp)
+
+taille_lexique=len(lexique)
+
+#Cette fonction renvoie la position du mot dans la liste
+def rang_mot(mot):
+    if mot in lexique:
+        return(lexique.index(mot))
+    else:
+        return(None)
+
+
 
 print("Démarrage de l'interface graphique...")
 

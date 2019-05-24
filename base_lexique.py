@@ -1,6 +1,6 @@
 # coding: utf8
 import sqlite3
-
+import pickle
 
 #Ouverture du fichier au format utf8 et chargement des entrées -> lecture
 print("Lecture du fichier de lexique.")
@@ -8,7 +8,8 @@ lexique_complet=open("Lexique381.txt",encoding='utf8')
 lecture=lexique_complet.readlines()
 
 #Sélection des entrées pertinentes -> entrees
-entrees=[]
+graphemes=[]
+dernier_grapheme=""
 premier=True
 for ligne in lecture:
     ligne=ligne.split("\t")
@@ -16,8 +17,16 @@ for ligne in lecture:
         #0->graphemes
         #8->freq livres
         #9->freq films
-        une_entree=[ligne[0],ligne[9]+ligne[8]]
-        entrees.append(une_entree)
+        #une_entree=[ligne[0],ligne[9]+ligne[8]]
+        #entrees.append(une_entree)
+        g,freq=ligne[0],float(ligne[9])+float(ligne[8])
+        if g==dernier_grapheme:
+            graphemes[-1][1]=graphemes[-1][1]+freq
+        else:
+            graphemes=graphemes+[[g,freq]]
+            dernier_grapheme=g
+        if len(graphemes)%1000==0:
+            print(len(graphemes))
     else:
         premier=False
 #On ferme de fichier
@@ -37,14 +46,14 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS lexique(
      id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
      ortho TEXT,
-     freqlivres REAL
+     freq REAL
 )
 """)
 #La table est remplie avec les "entrees"
 cursor.executemany("""
-INSERT INTO lexique(ortho,freqlivres) VALUES(?, ?)""", entrees)
+INSERT INTO lexique(ortho,freq) VALUES(?, ?)""", graphemes)
 #On trie par fréquence décroissante
-lexique_classe=cursor.execute('SELECT * FROM lexique ORDER BY freqlivres DESC')
+lexique_classe=cursor.execute('SELECT * FROM lexique ORDER BY freq DESC')
 conn.commit()
 #On récupère les données -> lexique
 lexique=[]
@@ -57,6 +66,10 @@ conn.close()
 taille_lexique=len(lexique)
 print("Il y a "+str(taille_lexique)+" mots dans ce lexique.")
 
+#Sauvegarde de la liste
+with open('freqlex.dat', 'wb') as fp:
+    pickle.dump(lexique, fp)
+
 #Cette fonction renvoie la position du mot dans la liste
 def rang_mot(mot):
     if mot in lexique:
@@ -66,8 +79,6 @@ def rang_mot(mot):
     
 
 if __name__=="__main__":
-    
-
     print("test:")
     for i in range(100):
         print(str(i)+"->"+lexique[i])
