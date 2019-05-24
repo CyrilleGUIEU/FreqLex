@@ -4,8 +4,11 @@ Un outil pour évaluer la difficulté lexicale d'un texte
 **Installation:**
 
 Vous devez au préalable installer Python 3 sur www.python.org
-Il faut ensuite télécharger les quatre fichiers: FreqLex.py , base_lexique.py, gestion_texte.py et Lexique381.txt
-Ce dernier fichier provient du projet www.lexique.org et peut être remplacé par une autre base de lexique fréquentiel au même format.
+Il faut ensuite télécharger les trois fichiers: 
+* FreqLex.py
+* gestion_texte.py 
+* freqlex.dat
+Ce dernier fichier a été généré par le script base_lexique.py. Ce dernier utilise le fichier lexique381.txt qui provient du projet www.lexique.org. Il peut être remplacé par une autre base de lexique fréquentiel au même format.
 
 **Utilisation:**
 
