@@ -8,8 +8,6 @@ Il faut ensuite télécharger les deux fichiers:
 * FreqLex.py
 * freqlex.dat
 
-Ce dernier fichier a été généré par le script base_lexique.py. Celui-ci utilise le fichier de données lexique381.txt qui provient du projet www.lexique.org. Il peut être remplacé par une autre base de lexique fréquentiel au même format.
-
 **Utilisation:**
 
 Le logiciel se lance en exécutant FreqLex.py
@@ -20,3 +18,7 @@ Ensuite il suffit de coller un texte dans la zone de texte de gauche et d'appuye
 **Notes:**
 * Ces évaluations sont relatives au **lexique** et ne prennent pas en compte d'autres paramètres très importants comme les structures grammaticales
 * La base lexicale est construite sur un corpus de sous-titres de films et de livres ces deux fréquences ont les même poids dans le calcul global de fréquence, ce choix est bien sûr arbitraire 
+
+**Making Of**
+
+Les fichiers mentionnés dans cette section sont dans le dossier "MakingOf". Le fichier freqlex.dat a été généré par le script base_lexique.py. Celui-ci utilise le fichier de données lexique381.txt qui provient du projet www.lexique.org. Il peut être remplacé par une autre base de lexique fréquentiel au même format.
