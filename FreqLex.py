@@ -4,10 +4,6 @@
 from tkinter import font,Tk,END,LabelFrame,GROOVE,VERTICAL,WORD,S,N,Frame,Scrollbar,Text,Listbox
 import pickle
 
-#On importe les programmes propres au projet
-#from base_lexique import rang_mot,taille_lexique
-
-from gestion_texte import texte_liste
 
 #Récupération des données
 with open ('freqlex.dat', 'rb') as fp:
@@ -21,7 +17,29 @@ def rang_mot(mot):
         return(lexique.index(mot))
     else:
         return(None)
-
+    
+def texte_liste(t1):
+    """Cette fonction transforme un texte en liste de mots"""
+    liste_mots=[]
+    i=0
+    mot=""
+    t=t1+"."
+    while t!="":
+        #test
+        #print(t[0:i+1])
+        
+        if t[0:i+1].isalpha():
+            mot=t[0:i+1]
+            i=i+1
+        else:
+            t=t[i+1:]
+            if mot!="":
+                liste_mots.append(mot)
+            #test
+            #print(liste_mots)
+            mot=""
+            i=0
+    return liste_mots
 
 
 print("Démarrage de l'interface graphique...")
