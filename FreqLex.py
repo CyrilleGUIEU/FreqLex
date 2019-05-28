@@ -1,4 +1,4 @@
-"""Interface graphique pour une étude d'énoncé à l'aide d'un lexique fréquenciel
+"""Interface graphique pour une étude d'énoncé à l'aide d'un lexique fréquentiel
 """
 # On importe Tkinter
 from tkinter import font,Tk,END,LabelFrame,GROOVE,VERTICAL,WORD,S,N,Frame,Scrollbar,Text,Listbox
@@ -11,8 +11,8 @@ with open ('freqlex.dat', 'rb') as fp:
 
 taille_lexique=len(lexique)
 
-#Cette fonction renvoie la position du mot dans la liste
 def rang_mot(mot):
+    """#ette fonction renvoie la position du mot dans la liste"""
     if mot in lexique:
         return(lexique.index(mot))
     else:
@@ -24,10 +24,7 @@ def texte_liste(t1):
     i=0
     mot=""
     t=t1+"."
-    while t!="":
-        #test
-        #print(t[0:i+1])
-        
+    while t!="":        
         if t[0:i+1].isalpha():
             mot=t[0:i+1]
             i=i+1
@@ -35,8 +32,6 @@ def texte_liste(t1):
             t=t[i+1:]
             if mot!="":
                 liste_mots.append(mot)
-            #test
-            #print(liste_mots)
             mot=""
             i=0
     return liste_mots
