@@ -3,14 +3,16 @@ Un outil pour évaluer la difficulté lexicale d'un texte
 
 **Installation:**
 
-- Python 3 doit être installé sur votre ordinateur, si ce n'est pas le cas aller sur www.python.org
+- Python 3 doit être installé sur votre ordinateur, si ce n'est pas le cas allez sur www.python.org
 - Télécharger ensuite l'archive FreqLex.zip
 - Décompresser l'archive dans un dossier
 
 **Utilisation:**
 
 Le logiciel se lance en exécutant FreqLex.py
+
 Une fenêtre s'ouvre après quelques secondes de calcul dans une console.
+
 Ensuite il suffit de coller un texte dans la zone de texte de gauche et d'appuyer sur la touche "Entrée" pour voir le classement des mots dans la zone de droite.
 
 
@@ -20,4 +22,6 @@ Ensuite il suffit de coller un texte dans la zone de texte de gauche et d'appuye
 
 **Making Of**
 
-Les fichiers mentionnés dans cette section sont dans le dossier "MakingOf". Le fichier freqlex.dat a été généré par le script base_lexique.py. Celui-ci utilise le fichier de données lexique381.txt qui provient du projet www.lexique.org. Il peut être remplacé par une autre base de lexique fréquentiel au même format. Pour construire l'archive il faut lancer MakeZip.py.
+Les fichiers mentionnés dans cette section sont dans le dossier "MakingOf". Le fichier freqlex.dat a été généré par le script base_lexique.py. Celui-ci utilise le fichier de données lexique381.txt qui provient du projet www.lexique.org. Il peut être remplacé par une autre base de lexique fréquentiel au même format. 
+
+Pour construire l'archive il faut lancer MakeZip.py.
