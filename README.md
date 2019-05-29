@@ -9,7 +9,7 @@ Un outil pour évaluer la difficulté lexicale d'un texte
 
 **Utilisation:**
 
-Le logiciel se lance en exécutant FreqLex.py du dossier décompressé. Une fenêtre s'ouvre après quelques secondes de calcul dans une console.
+Le logiciel se lance en exécutant le fichier FreqLex.py du dossier décompressé. Une fenêtre s'ouvre après quelques secondes de calcul dans une console.
 
 Ensuite il suffit de coller un texte dans la zone de texte de gauche et d'appuyer sur la touche "Entrée" pour voir le classement des mots dans la zone de droite.
 
