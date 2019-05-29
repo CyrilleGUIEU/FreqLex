@@ -6,7 +6,7 @@ import pickle
 
 
 #Récupération des données
-with open ('freqlex.dat', 'rb') as fp:
+with open ('Data/freqlex.dat', 'rb') as fp:
     lexique = pickle.load(fp)
 
 taille_lexique=len(lexique)
