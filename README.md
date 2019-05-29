@@ -3,9 +3,9 @@ Un outil pour évaluer la difficulté lexicale d'un texte
 
 **Installation:**
 
-- Python 3 doit être installé sur votre ordinateur, si ce n'est pas le cas allez sur www.python.org
-- Télécharger ensuite l'archive FreqLex.zip
-- Décompresser l'archive dans un dossier
+* Python 3 doit être installé sur votre ordinateur, si ce n'est pas le cas allez sur www.python.org
+* Téléchargez ensuite l'archive FreqLex.zip
+* Décompressez l'archive dans un dossier
 
 **Utilisation:**
 
