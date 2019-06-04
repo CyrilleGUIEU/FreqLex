@@ -10,6 +10,7 @@ archive.write("Scripts/licence_freqlex.py")
 archive.write("Data/freqlex.dat")
 archive.write("Data/icon.ico")
 archive.write("FreqLex.py")
+archive.write("Licence")
 archive.close()
 
 
