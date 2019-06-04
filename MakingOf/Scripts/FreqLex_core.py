@@ -64,7 +64,7 @@ class GUI():
         asc_enonce.grid(column=1, row=0, sticky=S+N)
         
         #Ce cadre contient les deux cadres de listes de mots
-        cadre_listes=LabelFrame(fenetre, text="Analyse fréquencielle \n 0->très fréquent 100->très rare",width=200, height=600, borderwidth=2,
+        cadre_listes=LabelFrame(fenetre, text="Analyse fréquentielle \n 0->très fréquent 100->très rare",width=200, height=600, borderwidth=2,
                                 relief=GROOVE)
         
         #Ce cadre contient les mots du lexique classés -pdle=0
@@ -94,7 +94,7 @@ class GUI():
         self.curseur_pdle=Scale(cadre_listes, orient='horizontal',
                                 from_=0, to=100,
                                 resolution=100/NCP, tickinterval=2,
-                                label="Poids de l'écrit \n dans le lexique ",
+                                label="Poids de l'écrit(%) ",
                                 command=self.analyse)
         self.curseur_pdle.set(50)
         self.curseur_pdle.grid(column=1,row=1)
