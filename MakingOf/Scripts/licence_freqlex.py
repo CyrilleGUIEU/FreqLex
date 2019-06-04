@@ -16,7 +16,7 @@ class Licence:
                                 relief=GROOVE,text="Licence utilisateur")
         asc_licence=Scrollbar(cadre_licence,orient=VERTICAL)
         texte_licence = Text(cadre_licence, wrap=WORD,font=police_licence)
-        fichier_licence=open('../Licence')
+        fichier_licence=open('Licence')
         texte_licence.insert(END,fichier_licence.read())
         texte_licence.config(state=DISABLED)
         ## association du déplacement de la glissière des scrollbar avec la position visible dans  
