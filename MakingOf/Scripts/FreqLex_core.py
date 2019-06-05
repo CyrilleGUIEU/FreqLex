@@ -29,14 +29,24 @@ def texte_liste(t1):
     i=0
     mot=""
     t=t1+"."
+    exceptions=["'","-"]
     while t!="":        
-        if t[0:i+1].isalpha():
+        if t[i].isalpha() or t[i] in exceptions :
             mot=t[0:i+1]
             i=i+1
         else:
             t=t[i+1:]
             if mot!="":
-                liste_mots.append(mot)
+                if mot in lexiquep[0]:
+                    if mot not in liste_mots:
+                        liste_mots.append(mot)
+                else:
+                    for e in exceptions:
+                        mots=mot.split(e)
+                        for m in mots:
+                            if mot not in liste_mots:
+                                liste_mots.append(m)
+                        
             mot=""
             i=0
     return liste_mots

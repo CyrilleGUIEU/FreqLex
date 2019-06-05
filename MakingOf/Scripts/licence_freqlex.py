@@ -1,5 +1,6 @@
 from tkinter import font,LabelFrame,Scrollbar,Listbox,Tk,Text,Button
 from tkinter import GROOVE,VERTICAL,WORD,END,DISABLED,S,N 
+import webbrowser
 
 from Scripts.gui_freqlex import fenetre_freqlex,LARGEUR_CADRE_ENONCE
 
