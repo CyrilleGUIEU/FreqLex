@@ -1,5 +1,5 @@
 # FreqLex
-Un outil pour évaluer la difficulté lexicale d'un texte
+Un outil pour détecter les difficultés lexicales d'un texte
 
 **Installation:**
 
