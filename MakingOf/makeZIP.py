@@ -2,7 +2,7 @@ from zipfile import ZipFile
 
 
 
-archive=ZipFile("../FreqLeq.zip","w")
+archive=ZipFile("../FreqLeq-versionBeta11062019.zip","w")
 archive.write("Scripts/FreqLex_core.py")
 archive.write("Scripts/base_lexique.py")
 archive.write("Scripts/gui_freqlex.py")
