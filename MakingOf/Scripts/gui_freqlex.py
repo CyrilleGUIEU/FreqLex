@@ -15,9 +15,27 @@ class liste_mots:
         self.mots.grid(column=0,row=0)
         self.ascenseur.grid(column=1,row=0,sticky=S+N)
         self.ascenseur.config( command = self.mots.yview )
-def fenetre_freqlex():
+    def ajoute_mot_couleur(self,mot,couleur):
+        fin=self.mots.size()
+        self.mots.insert(fin,mot)
+        self.mots.itemconfig(fin,fg=couleur)
+
+def fenetre_freqlex(test=False):
     fenetre=Tk()
     fenetre.title('FreqLex')
-    fenetre.wm_iconbitmap('DATA/icon.ico')
+    if test:
+        fenetre.wm_iconbitmap('../DATA/icon.ico')
+    else:
+        fenetre.wm_iconbitmap('DATA/icon.ico')
     return(fenetre)
 
+if __name__=="__main__":
+    f=fenetre_freqlex(test=True)
+    l=liste_mots(f,"Test")
+    l.mots.insert(0,"test1")
+    l.mots.insert(1,"test2")
+    l.cadre.pack()
+    l.ajoute_mot_couleur("t4","red")
+    l.ajoute_mot_couleur("t5","blue")
+    l.mots.select_set(0,0)
+    

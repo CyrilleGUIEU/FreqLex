@@ -1,55 +1,28 @@
 """Interface graphique pour une étude d'énoncé à l'aide d'un lexique fréquentiel
 """
+
+
 # On importe Tkinter pour construire l'interface graphique
 from tkinter import Scale,DISABLED,font,Tk,END,LabelFrame,Button,GROOVE,VERTICAL,WORD,S,N,Frame,Scrollbar,Text,Listbox
 #Le module pickle sert à importer les données
 import pickle
 import webbrowser
 
-#Ce module est un module du projet freqlex
+#Ces modules sont des modules du projet freqlex
 from Scripts.base_lexique import NCP,FICHIER_SAUVEGARDE,rang_mot
 from Scripts.gui_freqlex import liste_mots,fenetre_freqlex,LARGEUR_CADRE_ENONCE
 from Scripts.licence_freqlex import Licence,cree_cadre_credits,FICHIER_LICENCE
-
-
-
+from Scripts.gestion_texte import ensemble_mots
+from Scripts.gestion_couleurs import colore_mots,convertit_indice_couleur,COULEUR_ABSENT
 
 #Récupération des données
 with open (FICHIER_SAUVEGARDE, 'rb') as fp:
-    #La variable "lexique" est la liste des graphème ordonnée par fréquence décroissante
+    #La variable "lexique" est la liste des formes orthographiques ordonnées
+    #par fréquence décroissante
     lexiquep = pickle.load(fp)
 
 taille_lexique=len(lexiquep[0])
-
-
-    
-def texte_liste(t1):
-    """Cette fonction transforme un texte en liste de mots"""
-    liste_mots=[]
-    i=0
-    mot=""
-    t=t1+"."
-    exceptions=["'","-"]
-    while t!="":        
-        if t[i].isalpha() or t[i] in exceptions :
-            mot=t[0:i+1]
-            i=i+1
-        else:
-            t=t[i+1:]
-            if mot!="":
-                if mot in lexiquep[0]:
-                    if mot not in liste_mots:
-                        liste_mots.append(mot)
-                else:
-                    for e in exceptions:
-                        mots=mot.split(e)
-                        for m in mots:
-                            if mot not in liste_mots:
-                                liste_mots.append(m)
-                        
-            mot=""
-            i=0
-    return liste_mots
+  
 
 class GUI():
     def __init__(self):
@@ -116,59 +89,65 @@ class GUI():
         #On place les cadres de premier niveau
         cadre_listes.grid(column=1,row=0,rowspan=2)
         cadre_enonce.grid(column=0,row=0)
-        cadre_credits.grid(column=0,row=1)            
+        cadre_credits.grid(column=0,row=1)
+
+        #Les données liées à l'énoncé seront stockées dans cette variable
+        self.enonce=ensemble_mots(lexiquep)
 
         # On démarre la boucle Tkinter qui s'interrompt quand on ferme la fenêtre
         fenetre.mainloop()
     #Fonction qui gère le traitement de l'énoncé
-    def affiche_liste_mots(self,pdle,les_mots,zone_mots_lexique,zone_mots_absents):
-        dict_mots={}
-        indices_mots=[]
-        mots_absents=[]
-        for mot in les_mots:
-            mot_init=mot
-            mot=mot.lower()
-            r=rang_mot(mot,pdle,lexiquep)
-            #Si le mot n'est pas dans le lexique ...
-            if r==None:
-                #...on le met dans les mots absents si il n'y est pas déjà
-                if mot_init not in mots_absents:
-                    mots_absents.append(mot_init)
-            else:
-            #Sinon on l'ajoute au dictionnaire si il n'y est pas déjà
-                if not r in dict_mots:
-                    dict_mots[r]=mot_init
-                    #On conserve une liste d'indices pour le classement
-                    indices_mots.append(r)
-        #Classement par niveau de rareté décroissant
-        indices_mots.sort(reverse=True)
-        #On efface l'affichage du classement
-        zone_mots_lexique.mots.delete(0,END)
-        #On insère les nouveaux mots dans le classement
-        for i in indices_mots:
-            zone_mots_lexique.mots.insert(END, dict_mots[i]+"->"+str(int(100*i/taille_lexique)))
-        #On efface la liste des mots absents pour la reconstruire à partir des
-        #données actualisées
+    def affiche_liste_mots(self,pdle,zone_mots_lexique,zone_mots_absents):
+        #On efface l'affichage des mots absents
         zone_mots_absents.mots.delete(0,END)
-        for mot in mots_absents:
-            zone_mots_absents.mots.insert(END, mot)        
+        #On génère la liste des mots absents du lexique
+        self.enonce.creer_liste_absents(pdle)
+        #On insère les mots absents dans la zone des mots absents
+        mots_affiches=[] #Ce tableau évite d'afficher les doublons
+        for mot in self.enonce.liste_absents:
+            if mot.minuscule not in mots_affiches:
+                zone_mots_absents.ajoute_mot_couleur(mot.original,COULEUR_ABSENT)
+                mots_affiches.append(mot.minuscule)
+        #On efface l'affichage des mots du lexique
+        zone_mots_lexique.mots.delete(0,END)
+        #On génère la liste des mots du lexique
+        self.enonce.creer_liste_lexique(pdle)
+        #On insère les mots du lexique dans la zone des mots du lexique
+        mots_affiches=[] #Ce tableau évite d'afficher les doublons
+        for mot in self.enonce.liste_lexique:
+            if mot.minuscule not in mots_affiches:
+                r=mot.rangs[pdle]
+                p=self.enonce.convertit_rang_pourcent(r,pdle)
+                chaine=mot.original+"->"+str(p)+"%"
+                couleur=convertit_indice_couleur(r,pdle,self.enonce)
+                zone_mots_lexique.ajoute_mot_couleur(chaine,couleur)
+                mots_affiches.append(mot.minuscule)
+                
+    
+    
+        
     def ecoute_clavier(self,event):
         touche = event.keysym
         if touche=="Return":
             self.analyse(event)
+            
         
-    def analyse(self,event):       
+    def analyse(self,event):
+        #On efface les éventuelles données
+        self.enonce.efface_liste_mots()
         #Extraction du texte à partir du cadre
-        texte_brut=self.texte_enonce.get("1.0",END)
-        #Génération de la liste de mots à partir du texte brut
-        les_mots=texte_liste(texte_brut)
-        #Ce dictionnaire contiendra les mots avec la casse
-        #du texte en fonction de leur rang
-        self.affiche_liste_mots(0,les_mots,self.mots_lexique_pdle0,self.mots_absents_pdle0)
-        self.affiche_liste_mots(NCP,les_mots,self.mots_lexique_pdle1,self.mots_absents_pdle1)
+        self.enonce.ajoute_mots_fenetre(self.texte_enonce,lexiquep[0])
+        #Actualisation des affichages des listes de droite
+        self.affiche_liste_mots(0,self.mots_lexique_pdle0,self.mots_absents_pdle0)
+        self.affiche_liste_mots(NCP,self.mots_lexique_pdle1,self.mots_absents_pdle1)
         pdle=int(self.curseur_pdle.get()/100*NCP)
-        self.affiche_liste_mots(pdle,les_mots,self.mots_lexique_pdle,self.mots_absents_pdle)
+        self.affiche_liste_mots(pdle,self.mots_lexique_pdle,self.mots_absents_pdle)
+        #Coloration des mots de la zone d'énoncé
+        colore_mots(self.texte_enonce,pdle,self.enonce)
         
+                
+             
+            
 
 
 
