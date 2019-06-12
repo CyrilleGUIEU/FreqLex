@@ -27,3 +27,7 @@ Les fichiers mentionnés dans cette section sont dans le dossier "MakingOf".
 Le fichier **Data/freqlex.dat** a été généré par le script **MakeBase.py**. Celui-ci utilise le fichier de données **Scripts/lexique382.txt** qui provient du projet www.lexique.org. Il peut être remplacé par une autre base de lexique fréquentiel au même format. 
 
 Pour construire l'archive il faut lancer **MakeZip.py**.
+
+**En savoir plus**
+
+Un [article](https://www.researchgate.net/publication/333718295_FreqLex_un_outil_pour_evaluer_les_difficultes_lexicales_d%27un_texte "Article sur Research Gate") explique la construction de ce projet.
