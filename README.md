@@ -1,11 +1,17 @@
 # FreqLex
 Un outil pour détecter les difficultés lexicales d'un texte
 
+**Pour les gens pressés:**
+[Une vidéo de démonstration](https://youtu.be/rDy-XkEWeew "Démo Toutube") du fonctionnement du logiciel.
+
+
 **Installation:**
 
 * **Python 3** doit être installé sur votre ordinateur, si ce n'est pas le cas allez sur www.python.org
 * Téléchargez ensuite l'archive **FreqLex.zip**
 * Décompressez l'archive dans un dossier
+
+[Vidéo d'aide à l'installation](https://youtu.be/P6CPuhJS5vk "Vidéo d'aide sur Youtube") pour les utilisateurs de Windows
 
 **Utilisation:**
 
@@ -15,6 +21,9 @@ Vous êtes ensuite invité.e à accepter la licence et à répondre à un rapide
 
 Pour analyser un texte il suffit de coller un texte dans la zone de texte de gauche et d'appuyer sur la touche **"Entrée"** pour voir les classement des mots à droite de la fenêtre.
 
+**En savoir plus**
+
+Un [article](https://www.researchgate.net/publication/333718295_FreqLex_un_outil_pour_evaluer_les_difficultes_lexicales_d%27un_texte "Article sur Research Gate") explique la construction de ce projet.
 
 **Notes:**
 * Ces évaluations sont relatives au **lexique** et ne prennent pas en compte d'autres paramètres très importants comme les structures grammaticales
@@ -28,6 +37,4 @@ Le fichier **Data/freqlex.dat** a été généré par le script **MakeBase.py**.
 
 Pour construire l'archive il faut lancer **MakeZip.py**.
 
-**En savoir plus**
 
-Un [article](https://www.researchgate.net/publication/333718295_FreqLex_un_outil_pour_evaluer_les_difficultes_lexicales_d%27un_texte "Article sur Research Gate") explique la construction de ce projet.
