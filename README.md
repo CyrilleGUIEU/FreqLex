@@ -1,8 +1,7 @@
 # FreqLex
 Un outil pour détecter les difficultés lexicales d'un texte
 
-**Pour les gens pressés:**
-[Une vidéo de démonstration](https://youtu.be/rDy-XkEWeew "Démo Toutube") du fonctionnement du logiciel.
+**Pour les gens pressés:** [Une vidéo de démonstration](https://youtu.be/rDy-XkEWeew "Démo Toutube") du fonctionnement du logiciel.
 
 
 **Installation:**
@@ -21,11 +20,10 @@ Vous êtes ensuite invité.e à accepter la licence et à répondre à un rapide
 
 Pour analyser un texte il suffit de coller un texte dans la zone de texte de gauche et d'appuyer sur la touche **"Entrée"** pour voir les classement des mots à droite de la fenêtre.
 
-**En savoir plus**
-
-Un [article](https://www.researchgate.net/publication/333718295_FreqLex_un_outil_pour_evaluer_les_difficultes_lexicales_d%27un_texte "Article sur Research Gate") explique la construction de ce projet.
+**En savoir plus:** Un [article](https://www.researchgate.net/publication/333718295_FreqLex_un_outil_pour_evaluer_les_difficultes_lexicales_d%27un_texte "Article sur Research Gate") explique la construction de ce projet.
 
 **Notes:**
+
 * Ces évaluations sont relatives au **lexique** et ne prennent pas en compte d'autres paramètres très importants comme les structures grammaticales
 * La base lexicale est construite sur un corpus de sous-titres de films et de livres ces deux fréquences ont les même poids dans le calcul global de fréquence, ce choix est bien sûr arbitraire et vous pouvez le modifier grâce au curseur central. Par ailleurs le choix même du corpus est lui-même porteur d'un arbitraire culturel.
 
