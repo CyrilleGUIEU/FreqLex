@@ -7,7 +7,7 @@ Un outil pour détecter les difficultés lexicales d'un texte
 **Installation:**
 
 * **Python 3** doit être installé sur votre ordinateur, si ce n'est pas le cas allez sur www.python.org
-* Téléchargez ensuite l'archive **FreqLex.zip**
+* Téléchargez ensuite l'archive **FreqLex-versionxxx.zip**
 * Décompressez l'archive dans un dossier
 
 [Vidéo d'aide à l'installation](https://youtu.be/P6CPuhJS5vk "Vidéo d'aide sur Youtube") pour les utilisateurs de Windows
