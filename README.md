@@ -1,38 +1,23 @@
 # FreqLex
 Un outil pour détecter les difficultés lexicales d'un texte
 
-**Pour les gens pressés:** [Une vidéo de démonstration](https://youtu.be/rDy-XkEWeew "Démo Toutube") du fonctionnement du logiciel.
+Ce dépôt contient les sources du logiciel FreqLex. Les exécutables sont disponibles [ici](https://www.researchgate.net/project/FreqLex).
+
+**Dépendances:**
+
+* **Python 3** 
+* **Numpy**
 
 
-**Installation:**
 
-* **Python 3** doit être installé sur votre ordinateur, si ce n'est pas le cas allez sur www.python.org
-* Téléchargez ensuite l'archive **FreqLex-versionxxx.zip**
-* Décompressez l'archive dans un dossier
+**Principes de fonctionnement**
+* **FreqLex.py** permet de lancer le programme
+* **FreqLEx_core.py** contient la définition de l'interface graphique
+* **gui_freqlex.py** contient les défintions de certains objets de l'interface
+* Les autres scripts définissent la structure de données du programme
+* Les dossiers **Data** et **bases_sql** contiennent les données lexicales
 
-[Vidéo d'aide à l'installation](https://youtu.be/P6CPuhJS5vk "Vidéo d'aide sur Youtube") pour les utilisateurs de Windows
-
-**Utilisation:**
-
-Le logiciel se lance en exécutant le fichier **FreqLex.py** du dossier décompressé précédent. 
-
-Vous êtes ensuite invité.e à accepter la licence et à répondre à un rapide questionnaire si vous le souhaitez.
-
-Pour analyser un texte il suffit de coller un texte dans la zone de texte de gauche et d'appuyer sur la touche **"Entrée"** pour voir les classement des mots à droite de la fenêtre.
-
-**En savoir plus:** Un [article](https://www.researchgate.net/publication/333718295_FreqLex_un_outil_pour_evaluer_les_difficultes_lexicales_d%27un_texte "Article sur Research Gate") explique la construction de ce projet.
-
-**Notes:**
-
-* Ces évaluations sont relatives au **lexique** et ne prennent pas en compte d'autres paramètres très importants comme les structures grammaticales
-* La base lexicale est construite sur un corpus de sous-titres de films et de livres ces deux fréquences ont les même poids dans le calcul global de fréquence, ce choix est bien sûr arbitraire et vous pouvez le modifier grâce au curseur central. Par ailleurs le choix même du corpus est lui-même porteur d'un arbitraire culturel.
-
-**Making Of**
-
-Les fichiers mentionnés dans cette section sont dans le dossier "MakingOf". 
-
-Le fichier **Data/freqlex.dat** a été généré par le script **MakeBase.py**. Celui-ci utilise le fichier de données **Scripts/lexique382.txt** qui provient du projet www.lexique.org. Il peut être remplacé par une autre base de lexique fréquentiel au même format. 
-
-Pour construire l'archive il faut lancer **MakeZip.py**.
+**Construire les archives**
+Pour construire les archives (sous Windows) il faut lancer **make.bat**. Les versions Windows, Linux et MacOS sont alors générées dans le répertoire parent. Seule la version Windows contient un exécutable. Les autres versions doivent être lancée avec un interpréteur Python.
 
 
