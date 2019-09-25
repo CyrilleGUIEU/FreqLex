@@ -2,6 +2,7 @@
 Un outil pour détecter les difficultés lexicales d'un texte
 
 Ce dépôt contient les sources du logiciel FreqLex. Les exécutables sont disponibles [ici](https://www.researchgate.net/project/FreqLex).
+Le mode d'emploi du logiciel est disponible sur [Research Gate](https://www.researchgate.net/publication/336018781_Mode_d%27emploi_du_logiciel_experimental_FreqLex?showFulltext=1&linkId=5d8adbbe92851c33e938b76c).
 
 **Dépendances:**
 
